@@ -1,0 +1,109 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "templateName": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "applicationApprovedNotificationMessage",
+                "accountClosedDeveloper",
+                "quotaLimitApproachingDeveloperNotificationMessage",
+                "newDeveloperNotificationMessage",
+                "emailChangeIdentityDefault",
+                "inviteUserNotificationMessage",
+                "newCommentNotificationMessage",
+                "confirmSignUpIdentityDefault",
+                "newIssueNotificationMessage",
+                "purchaseDeveloperNotificationMessage",
+                "passwordResetIdentityDefault",
+                "passwordResetByAdminNotificationMessage",
+                "rejectDeveloperNotificationMessage",
+                "requestDeveloperNotificationMessage"
+            ]
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Email Template update Parameters.",
+            "properties": {
+                "properties": {
+                    "description": "Email Template Update contract properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "body": {
+                            "description": "Email Template Body. This should be a valid XDocument",
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "Description of the Email Template.",
+                            "type": "string"
+                        },
+                        "parameters": {
+                            "description": "Email Template Parameter values.",
+                            "items": {
+                                "description": "Email Template Parameter contract.",
+                                "properties": {
+                                    "description": {
+                                        "description": "Template parameter description.",
+                                        "maxLength": 256,
+                                        "minLength": 1,
+                                        "pattern": "^[A-Za-z0-9-._]+$",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Template parameter name.",
+                                        "maxLength": 256,
+                                        "minLength": 1,
+                                        "pattern": "^[A-Za-z0-9-._]+$",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "description": "Template parameter title.",
+                                        "maxLength": 4096,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "subject": {
+                            "description": "Subject of the Template.",
+                            "maxLength": 1000,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Title of the Template.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
